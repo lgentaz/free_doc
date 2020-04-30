@@ -1,24 +1,41 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+FreeDoc is a Ruby app.
 
-Things you may want to cover:
+# Versions
+* Ruby version 2.5.1
+* Rails version 5.2.4
 
-* Ruby version
+# Gem
+* table_print: Use "tp" to visualize the information as tables
+* faker: To create a fake database
 
-* System dependencies
+This app helps manage a DB between doctors and patients.
 
-* Configuration
+# Before using 
+Please run "rails db:seed" to refresh DB.
 
-* Database creation
+# DB content
+* 50 doctors
+* 16 specialty
+* 150 patients
+* 300 appointments
+* 50 doctors
+* 9 cities
 
-* Database initialization
+# Relation between tables
+* Doctor - Patient :            n - n
+* Doctor - Appointment :        1 - n
+* Patient - Appointment :       1 - n
+* Doctor - City :               n - 1
+* Patient - City :              n - 1
+* Appointment - City :          n - 1
+* Doctor - Specialty :          n - n (creation of Diplomat as join table)
+* Doctor - Diplomat :    1 - n
+* Specialty - Diplomat : 1 - n
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Run tests
+* $ tp Doctor.all
+* $ tp Specialty.all
+* $ tp Patient.all
+* $ tp Diplomat.where(doctor_id:"number")
